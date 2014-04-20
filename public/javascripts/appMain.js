@@ -32,7 +32,7 @@ angular.module('myApp', ['angularFileUpload'])
       $scope.uploadPercent = parseInt(100.0 * evt.loaded / evt.total);
     }).success(function(data, status, headers, config) {
       console.log(data);
-    }).error(err){
+    }).error(function(err){
       console.log("ERR: ", err);
     });
     //.then(success, error, progress); 

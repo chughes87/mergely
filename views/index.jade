@@ -6,9 +6,9 @@ block content
   script(src='bower_components/ng-file-upload/angular-file-upload-shim.min.js')
   script(src='bower_components/ng-file-upload/angular-file-upload.min.js')
   script(src='javascripts/appMain.js')
-  div(ng-app='myApp', ng-controller='MainController')
+  div(ng-controller='MainController')
     h2= "Select files here:"
     input(type='file', ng-file-select='onFileSelect($files)')
     input(type='file', ng-file-select='onFileSelect($files)', multiple='multiple')
     div
-    {{processPercent}}% preprocessed {{uploadPercent}}% uploaded
+      {{processPercent}}% preprocessed {{uploadPercent}}% uploaded

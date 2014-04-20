@@ -1,12 +1,12 @@
 var db = require('../models');
 
 exports.employee = function(req, res){
-  db.User.findAll({
-    include: [ db.Task ]
-  }).success(function(users) {
+  db.Employee.findAll({
+    include: [ db.SalaryPeriod ]
+  }).success(function(employee) {
     res.render('index', {
       title: 'Express',
-      users: users
+      employee: employee
     });
   });
 };
