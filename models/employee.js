@@ -1,6 +1,6 @@
 module.exports = function(sequelize, DataTypes) {
   var Employee = sequelize.define('Employee', {
-    id: DataTypes.INTEGER,
+    id: {type: DataTypes.INTEGER, primaryKey: true},
     birthdate: DataTypes.DATE,
     firstName: DataTypes.STRING,
     lastName: DataTypes.STRING,

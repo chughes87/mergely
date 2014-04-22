@@ -1,0 +1,21 @@
+extends layout
+
+block content
+  h1= title
+  table
+    tr
+      td id
+      td birth date
+      td first name
+      td last name
+      td sex
+      td start date
+    each employee in employees
+      tr
+        td #{employee.id}
+        td #{employee.birthdate}
+        td 
+          a(href = '/employee/'+employee.id) #{employee.firstName}
+        td #{employee.lastName}
+        td #{employee.sex}
+        td #{employee.startDate}

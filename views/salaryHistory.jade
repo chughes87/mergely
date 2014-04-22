@@ -1,0 +1,16 @@
+extends layout
+
+block content
+  h1= title
+  table
+    tr
+      td id
+      td salary
+      td start date
+      td end date
+    each period in history
+      tr
+        td #{period.id}
+        td #{period.salary}
+        td #{period.startDate}
+        td #{period.endDate}

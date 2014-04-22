@@ -8,7 +8,8 @@ block content
   script(src='javascripts/appMain.js')
   div(ng-controller='MainController')
     h2= "Select files here:"
-    input(type='file', ng-file-select='onFileSelect($files)')
-    input(type='file', ng-file-select='onFileSelect($files)', multiple='multiple')
+    div {{message}}
     div
-      {{processPercent}}% preprocessed {{uploadPercent}}% uploaded
+      input(type='file', ng-file-select='onFileSelect($files)')
+    div
+      {{uploadPercent}}% uploaded {{processed}}% processed
