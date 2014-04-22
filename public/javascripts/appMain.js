@@ -1,6 +1,6 @@
 angular.module('myApp', ['angularFileUpload'])
 .controller('MainController', function($scope, $upload, $http) {
-  $scope.processPercent = 0;
+  $scope.processedPercent = 0;
   $scope.uploadPercent = 0;
   $scope.message = "Please select your employees_small.csv file";
   $scope.expecting = 'employees_small.csv';
