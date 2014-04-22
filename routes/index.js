@@ -14,5 +14,3 @@ files.filter(function(file) {
 app.get('/', function(req, res) {
   res.render('index', { title: 'Mergely' });
 });
-
-// module.exports = router;

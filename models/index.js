@@ -26,20 +26,3 @@ module.exports = lodash.extend({
   sequelize: sequelize,
   Sequelize: Sequelize
 }, db);
-
-// var Promise   = require('bluebird');
-
-// var readdirPromise = Promise.promisify(fs.readdir, fs);
-
-// readdirPromise(__dirname)
-// .then(function(files){
-//   console.log(files);
-//   files.filter(function(file) {
-//     return (file.indexOf('.') !== 0) && (file !== 'index.js');
-//   }).forEach(function(file) {
-//     var model = sequelize.import(path.join(__dirname, file));
-//     db[model.name] = model;
-//   });
-// }).error(function(err){
-//   console.log("ERR: failed to load models.");
-// });
