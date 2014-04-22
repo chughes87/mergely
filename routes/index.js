@@ -1,11 +1,18 @@
-var express = require('express');
-var router = express.Router();
-var employees = require('./employees');
-var salaryHistory = require('./salaryHistory');
+var app = require('../app');
+var fs = require('fs');
+var path = require('path');
+
+var files = fs.readdirSync(__dirname);
+files.filter(function(file) {  
+  return (file.indexOf('.') !== 0) && (file !== 'index.js');
+})
+.forEach(function(file) {
+  require(path.join(__dirname, file));
+});
 
 /* GET home page. */
-router.get('/', function(req, res) {
+app.get('/', function(req, res) {
   res.render('index', { title: 'Mergely' });
 });
 
-module.exports = router;
+// module.exports = router;

@@ -21,8 +21,9 @@ app.use(cookieParser());
 app.use(require('stylus').middleware(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', routes);
-// app.use('/employees', employees);
+// app.use('/', routes);
+
+app.set('port', process.env.PORT || 3000);
 
 /// catch 404 and forwarding to error handler
 app.use(function(req, res, next) {
@@ -54,8 +55,6 @@ app.use(function(err, req, res, next) {
         error: {}
     });
 });
-
-app.set('port', process.env.PORT || 3000);
 
 db
   .sequelize

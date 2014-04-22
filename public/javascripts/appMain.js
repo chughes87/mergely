@@ -3,19 +3,25 @@ angular.module('myApp', ['angularFileUpload'])
   $scope.processPercent = 0;
   $scope.uploadPercent = 0;
   $scope.message = "Please select your employees_small.csv file";
+  $scope.expecting = 'employees_small.csv';
   $scope.onFileSelect = function($files) {
-    var file = $files[0]; // I assume only one file is given...
+    var file = $files[0]; // assumes only one file is given...
     var url;
-    if(file.name === 'salaries_small.csv'){
-      url = '/salaries';
-    }else if(file.name === 'employees_small.csv'){
+    if(file.name !== $scope.expecting){
+      $scope.message = "ERROR: Recieved "+file.name+" while expecting "+$scope.expecting;
+      return;
+    }
+    if(file.name === 'employees_small.csv'){
       url = '/employees';
-      $scope.message = "uploading..."
+      $scope.expecting = 'salaries_small.csv';
+      $scope.message = "uploading...";
+    }else if(file.name === 'salaries_small.csv'){
+      url = '/salaries';
+      $scope.message = "uploading...";
     }else{
       $scope.message = "ERROR: Unexpected file given. Please supply a employees_small.csv or a salaries_small.csv";
       return;
     }
-    //TODO: disable button
     $upload.upload({
       url: url,
       method: 'PUT',
@@ -29,9 +35,8 @@ angular.module('myApp', ['angularFileUpload'])
         $scope.message = "Please wait, redirecting...";
         window.location += data;
       }
-      // console.log(data);
     }).error(function(err){
-      console.log("ERR: ", err);
+      $scope.message = "ERROR: file upload failed: " + err;
     });
   };
 });
