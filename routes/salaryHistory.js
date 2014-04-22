@@ -15,12 +15,16 @@ app.get('/employee/:id', function(req, res){
 
 app.put('/salaries', function(req, res){
   var addSalariesToDB = function(row){
-    db.SalaryPeriod.create({
-      EmployeeId : row[0],
-      salary     : row[1],
-      startDate  : row[2],
-      endDate    : row[3]
-    });
+    try{
+      db.SalaryPeriod.create({
+        EmployeeId : row[0],
+        salary     : row[1],
+        startDate  : row[2],
+        endDate    : row[3]
+      });
+    } catch(e){
+      console.log("Sequelize failed to insert \"",row,"\". ERR msg: ",e);
+    }
   };
   loader(req, res, addSalariesToDB)
   .then(function(){

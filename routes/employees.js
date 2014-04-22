@@ -15,14 +15,18 @@ app.get('/employees', function(req, res){
 
 app.put('/employees', function(req, res){
   var addEmployeesToDB = function(row){
-    db.Employee.create({
-      id        : row[0],
-      birthdate : row[1],
-      firstName : row[2],
-      lastName  : row[3],
-      sex       : row[4],
-      startDate : row[5]
-    });
+    try{
+      db.Employee.create({
+        id        : row[0],
+        birthdate : row[1],
+        firstName : row[2],
+        lastName  : row[3],
+        sex       : row[4],
+        startDate : row[5]
+      });
+    } catch(e){
+      console.log("Sequelize failed to insert \"",row,"\". ERR msg: ",e);
+    }
   };
   loader(req, res, addEmployeesToDB)
   .then(function(fields){
